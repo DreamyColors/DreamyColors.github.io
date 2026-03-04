@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>لوحة تحكم الأخصائيين - طفلي معي</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Inter:wght@400;600&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
     <div class="app-container">
         <aside class="sidebar">
@@ -16,7 +20,8 @@
                 <span>طفلي معي</span>
             </div>
             <nav>
-                <a href="#" class="active"><i class="fas fa-tasks"></i> المعالم النمائية</a>
+                <a href="#" class="active" id="nav-milestones"><i class="fas fa-tasks"></i> المعالم النمائية</a>
+                <a href="#" id="nav-vaccinations"><i class="fas fa-syringe"></i> التلقيحات</a>
                 <a href="#"><i class="fas fa-users"></i> إحصائيات</a>
                 <a href="#"><i class="fas fa-cog"></i> الإعدادات</a>
             </nav>
@@ -26,47 +31,75 @@
         </aside>
 
         <main class="main-content">
-            <header>
-                <div class="header-info">
-                    <h1>إدارة المعالم النمائية</h1>
-                    <p>أضف وحدث معالم النمو للأطفال من الولادة حتى 3 سنوات</p>
-                </div>
-                <button id="add-milestone-btn" class="btn-primary">
-                    <i class="fas fa-plus"></i> إضافة معلم جديد
-                </button>
-            </header>
+            <!-- Milestones Section -->
+            <section id="milestones-section">
+                <header>
+                    <div class="header-info">
+                        <h1>إدارة المعالم النمائية</h1>
+                        <p>أضف وحدث معالم النمو للأطفال من الولادة حتى 3 سنوات</p>
+                    </div>
+                    <button id="add-milestone-btn" class="btn-primary">
+                        <i class="fas fa-plus"></i> إضافة معلم جديد
+                    </button>
+                </header>
 
-            <section class="filters">
-                <div class="search-box">
-                    <i class="fas fa-search"></i>
-                    <input type="text" id="search-input" placeholder="بحث عن معلم...">
-                </div>
-                <div class="filter-group">
-                    <select id="category-filter">
-                        <option value="all">كل التصنيفات</option>
-                        <option value="MOTOR">حركي</option>
-                        <option value="LANGUAGE">لغوي</option>
-                        <option value="COGNITIVE">معرفي</option>
-                        <option value="SOCIAL">اجتماعي</option>
-                    </select>
-                    <select id="age-filter">
-                        <option value="all">كل الأعمار</option>
-                        <option value="2">2 شهر</option>
-                        <option value="4">4 أشهر</option>
-                        <option value="6">6 أشهر</option>
-                        <option value="9">9 أشهر</option>
-                        <option value="12">12 شهر</option>
-                        <option value="18">18 شهر</option>
-                        <option value="24">24 شهر</option>
-                        <option value="36">36 شهر</option>
-                    </select>
+                <section class="filters">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="search-input" placeholder="بحث عن معلم...">
+                    </div>
+                    <div class="filter-group">
+                        <select id="category-filter">
+                            <option value="all">كل التصنيفات</option>
+                            <option value="MOTOR">حركي</option>
+                            <option value="LANGUAGE">لغوي</option>
+                            <option value="COGNITIVE">معرفي</option>
+                            <option value="SOCIAL">اجتماعي</option>
+                        </select>
+                        <select id="age-filter">
+                            <option value="all">كل الأعمار</option>
+                            <option value="2">2 شهر</option>
+                            <option value="4">4 أشهر</option>
+                            <option value="6">6 أشهر</option>
+                            <option value="9">9 أشهر</option>
+                            <option value="12">12 شهر</option>
+                            <option value="18">18 شهر</option>
+                            <option value="24">24 شهر</option>
+                            <option value="36">36 شهر</option>
+                        </select>
+                    </div>
+                </section>
+
+                <div class="milestones-grid" id="milestones-list">
+                    <!-- Milestones will be loaded here -->
+                    <div class="loader">جارِ التحميل...</div>
                 </div>
             </section>
 
-            <div class="milestones-grid" id="milestones-list">
-                <!-- Milestones will be loaded here -->
-                <div class="loader">جارِ التحميل...</div>
-            </div>
+            <!-- Vaccinations Section -->
+            <section id="vaccinations-section" style="display: none;">
+                <header>
+                    <div class="header-info">
+                        <h1>إدارة التلقيحات</h1>
+                        <p>أضف وحدث جدول التلقيحات للأطفال</p>
+                    </div>
+                    <button id="add-vaccination-btn" class="btn-primary">
+                        <i class="fas fa-plus"></i> إضافة لقاح جديد
+                    </button>
+                </header>
+
+                <section class="filters">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="vaccination-search" placeholder="بحث عن لقاح...">
+                    </div>
+                </section>
+
+                <div class="milestones-grid" id="vaccinations-list">
+                    <!-- Vaccinations will be loaded here -->
+                    <div class="loader">جارِ التحميل...</div>
+                </div>
+            </section>
         </main>
     </div>
 
@@ -111,8 +144,35 @@
                 </div>
             </form>
         </div>
-    </div>
+        <!-- Vaccination Modal -->
+        <div id="vaccination-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="vaccination-modal-title">إضافة لقاح جديد</h2>
+                    <span class="close" id="close-vaccination-modal">&times;</span>
+                </div>
+                <form id="vaccination-form">
+                    <input type="hidden" id="vaccination-id">
+                    <div class="form-group">
+                        <label for="v-title">اسم اللقاح</label>
+                        <input type="text" id="v-title" required placeholder="مثال: لقاح الشلل">
+                    </div>
+                    <div class="form-group">
+                        <label for="v-description">الوصف / ملاحظات</label>
+                        <textarea id="v-description" placeholder="تفاصيل إضافية عن اللقاح..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="v-dueMonth">موعد اللقاح (بالأشهر)</label>
+                        <input type="number" id="v-dueMonth" required min="0" placeholder="0 = عند الولادة">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn-primary">حفظ اللقاح</button>
+                    </div>
+                </form>
+            </div>
+        </div>
 
-    <script type="module" src="app.js"></script>
+        <script type="module" src="app.js"></script>
 </body>
+
 </html>
